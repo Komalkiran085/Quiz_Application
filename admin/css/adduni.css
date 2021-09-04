@@ -1,0 +1,129 @@
+*{
+	width: 100%;
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+.page{
+	display: flex;
+}
+.index{
+	height: 100vh;
+	background-color: #865439;
+	width: 20%;
+}
+.background{
+	height: 100vh;
+	background-color: #ffe0c4;
+	width: 100%;
+}
+.profile_btn{
+	float: right;
+	width: 64%;
+	height: 10vh;
+	margin: 5px 20px;
+	padding: 5px 0;
+	background-color: transparent;
+	border: 0;
+	font-size: 30px;
+}
+.profile_btn:hover{
+	z-index: 1;
+	border: 1px solid black;
+	/* background-color: white; */
+	font-size: 25px;
+}
+.profile_btn a{
+	display: flex;
+}
+.dashboard{
+	font-size: 30px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+}
+.admin{
+	font-size: 40px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	color: white;
+}
+.menu-bar ul{
+	list-style-type: none;
+}
+.menu-bar li{
+	display: flex;
+	font-size: 20px;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	color: white;
+	padding: 20px 20px;
+	margin-left: 40px;
+	text-decoration: none;
+	width: 40%;
+}
+.menu-bar li:hover{
+	background-color: transparent;
+	font-size: 25px;
+	color: black;
+	border-radius: 5px;
+	width: 60%;
+	height: 10vh;
+}
+.menu-bar li i{
+	color: white;
+	display: flex;
+	padding: 0 10px;
+	float: left;
+}
+.menu-bar li i:hover{
+	color: black;
+	width: 40%;
+}
+.dashboard hr{
+	color: black;
+}
+.contain{
+	background-color: #c5a492;
+	padding: 25px 80px;
+	width: 60%;
+	height: 50%;
+	margin-left: 20%;
+	margin-top: 50px;
+	border-radius: 10px;
+	border: 1px solid white;
+	color: white;
+}
+.user_fields{
+	margin: 0px;
+}
+label{
+	margin: 0px;
+	padding: 10px 0;	
+}
+.submit_btn{
+	margin: 25px 0px;
+	padding-top: 50px;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	color: white;
+}
+input{
+	background-color: red;
+	height: 30px;
+	width: 70px;
+	border-radius: 5px;
+	border: 0px;
+}
+button{
+	background-color: transparent;
+	color: white;
+	height: 40px;
+	padding: 9px 12px;
+	border-radius: 5px;
+	border: 1px solid white;
+	width: 75%;
+}
