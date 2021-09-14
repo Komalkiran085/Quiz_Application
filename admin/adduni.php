@@ -64,16 +64,16 @@ session_start();
 
 		function adduni()
 		{
-			var name=document.getElementById('uname').value;
-			alert(name);
+			var uname=document.getElementById('uname').value;
+			alert(uname);
 			var token='<?php echo password_hash("university", PASSWORD_DEFAULT);?>';
-			if(name!="")
+			if(uname!="")
 			{
 				$.ajax(
 				{
 					type:'POST',
 					url:"ajax/adduni.php",
-					data:{name:name,token:token},
+					data:{uname:uname,token:token},
 					success:function(data)
 					{
 						if(data == 0)

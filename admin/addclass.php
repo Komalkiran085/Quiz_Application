@@ -39,8 +39,9 @@ session_start();
 			<form>
 				<div class="contain">
 					<div class="user_fields">
-								<label for="uname">University:</label>
+								<label for="university">University:</label>
 								<input type="name" name="uname" id="uname" class="form-control" placeholder="Enter your University">
+								<div class="list" id="list" style="width:100%;float:left;color:black;"></div>
 							</div>
 							<div class="user_fields">
 								<label for="cname">Class Name:</label>
@@ -66,10 +67,29 @@ session_start();
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 	<script type="text/javascript">
 
+		getuni();
+
+		function getuni()
+		{
+			var token='<?php echo password_hash("getuni", PASSWORD_DEFAULT);?>';
+			
+				$.ajax(
+				{
+					type:'POST',
+					url:"ajax/getuni.php",
+					data:{token:token},
+					success:function(data)
+					{
+						$('#list').html(data);
+					}
+				});
+			
+		}
+
 		function addclass()
 		{
 			var cname=document.getElementById('cname').value;
-			var uid=document.getElementById('uname').value;
+			var uid=document.getElementById('university').value;
 			alert(cname);
 			var token='<?php echo password_hash("class", PASSWORD_DEFAULT);?>';
 			if(cname!="")

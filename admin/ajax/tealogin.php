@@ -6,17 +6,17 @@
     	$email = $_POST['email'];
     	$password = $_POST['password'];
 
-    	$query = $db->prepare('SELECT * FROM users WHERE email=?');
+    	$query = $db->prepare('SELECT * FROM tea_details WHERE email=?');
         $data=array($email);
    	$execute = $query->execute($data);
     	if($query->rowcount()>0)
     	{
     		while($datarow=$query->fetch())
     		{
-    			if(password_verify($password,$datarow['password1']))
+    			if(password_verify($password,$datarow['password']))
     			{
     				$_SESSION['id'] =$datarow['id'];
-                    $_SESSION['name'] =$datarow['name'];
+                    $_SESSION['email'] =$datarow['email'];
     				echo 0;
     			}
                 else

@@ -3,10 +3,10 @@
     session_start();
     if(isset($_POST['token']) && password_verify("university", $_POST['token']))
     {
-    	$name=test_input($_POST['name']);
+    	$uname=test_input($_POST['uname']);
 
-    	$check=$db->prepare('INSERT INTO uni_details(name) VALUES (?)');
-    	$data=array($name);
+    	$check=$db->prepare('INSERT INTO uni_details(uname) VALUES (?)');
+    	$data=array($uname);
     	$execute = $check->execute($data);
     	if($execute)
     	{

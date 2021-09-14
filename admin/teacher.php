@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +24,7 @@
 			<div class="teacher">Teacher</div>
 		</div>
 		<div class="col-sm-8 background">
-			<h1>hello <?php echo $_SESSION['email'];?></h1>
+			<h1>Hello!! <?php echo $_SESSION['email'];?></h1>
 		</div>
 		<div class="col-sm-2 background">
 			<button type="submit" class="profile_btn">My Profile<a href="#"><i class="fa fa-chevron-down" aria-hidden="true"></i></a></button>

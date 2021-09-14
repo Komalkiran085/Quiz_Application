@@ -58,18 +58,18 @@
 							<div class="contain">
 							<div class="user_fields">
 								<label for="email">Teacher Email:</label>
-								<input type="email" name="email" id="email" class="form-control" placeholder="Enter your teacher email">
+								<input type="email" name="email" id="email1" class="form-control" placeholder="Enter your teacher email">
 							</div>
 							<div class="user_fields">
 								<label for="password">Password:</label>
-								<input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+								<input type="password" name="password" id="password1" class="form-control" placeholder="Enter your password">
 							</div>
-							<div class="user_fields">
+<!-- 							<div class="user_fields">
 								<label for="role">Role:</label>
 								<input type="role" name="role" id="role" class="form-control" placeholder="Enter your role">
-							</div>
+							</div> -->
 							<div class="submit_btn">
-								<button type="submit" name="Submit" id="submit" onclick="sendlogin();">Submit</button>
+								<button type="submit" name="Submit" id="submit1" onclick="tealogin();">Submit</button>
 							</div>
 							</div>
 						</form>
@@ -135,48 +135,34 @@
 			}
 		}
 
-		// function sendsignup()
-		// {
-		// 	var name = document.getElementById('name').value;
-		// 	var email1 = document.getElementById('email1').value;
-		// 	var password = document.getElementById('password1').value;
-		// 	var cpassword = document.getElementById('cpassword').value;
-		// 	var role = document.getElementById('role').value;
-			// var token = "<?php 
-			// echo password_hash("signuptoken", PASSWORD_DEFAULT);?>";
-		// 	if(name != "" && email1 != "" && password != "" && cpassword != "" && role != "")
-		// 	{
-		// 		if(password == cpassword)
-		// 		{
-		// 			$.ajax(
-		// 		{
-		// 			type:'POST',
-		// 			url:"ajax/signup.php",
-		// 			data:{name:name,email1:email1,password:password,cpassword:cpassword,role:role,token:token},
-		// 			success:function(data)
-		// 			{
-		// 				// alert (data);
-		// 				if(data == 0)
-		// 				{
-		// 					alert('user created');
-		// 					window.location = "admin.php";
-		// 				}
-		// 			}
-		// 		});
-		// 		}
-		// 		else
-		// 		{
-		// 			alert('Password and confirm password are not same');
-		// 		}
-
-		// 	}
-		// 	else
-		// 	{
-		// 		alert('Please fill all the fields');
-		// 	}
-
-		// }
-
+		function tealogin()
+		{
+			var email = document.getElementById('email1').value;
+			var password = document.getElementById('password1').value;
+			
+			var token = "<?php echo password_hash("teatoken", PASSWORD_DEFAULT);?>";
+			if(email!="" && password!="")
+			{
+				$.ajax(
+				{
+					type:'POST',
+					url:"ajax/tealogin.php",
+					data:{email:email,password:password,token:token},
+					success:function(data)
+					{
+						// alert(data);
+						if(data == 0)
+						{
+							window.location="teacher.php";
+						}
+					}
+				});
+			}
+			else
+			{
+				alert('please fill all the details.');
+			}
+		}
 
 
     </script>

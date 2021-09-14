@@ -13,7 +13,7 @@ if(isset($_POST['token']) && password_verify("getuni", $_POST['token']))
 		while($datarow = $check->fetch())
 		{
 			?>
-			<option value="<?php echo $datarow['id'];?>"><?php echo $datarow['name'];?></option>
+			<option value="<?php echo $datarow['id'];?>"><?php echo $datarow['uname'];?></option>
 			<?php
 		} ?>
 	</select>

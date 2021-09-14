@@ -57,10 +57,13 @@ session_start();
 							<div class="col-sm-12">
 								<div class="col-sm-3"></div>
 							<div class="col-sm-6 submit_btn">
-								<button type="submit" name="Submit" id="submit" onclick="getuni();">Submit</button>
+								<button type="submit" name="Submit" id="submit" onclick="adduser();">Submit</button>
 							</div>
 							<div class="col-sm-3"></div>
 						</div>
+				    </div>
+				    <div>
+				    	<div class="teacherlist" id="teacherlist"></div>
 				    </div>
 			</form>				
 			</div>
@@ -70,8 +73,6 @@ session_start();
 		<div class="col-sm-2 background">
 			<button type="submit" class="profile_btn">My Profile<a href="#"><i class="fa fa-chevron-down" aria-hidden="true"></i></a></button>
 		</div>
-	</div>
-
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 	<script type="text/javascript">
         getuni();
@@ -94,19 +95,65 @@ session_start();
 
 		function getclass()
 		{
+			var uid = document.getElementById('university').value;
 			var token='<?php echo password_hash("getclass", PASSWORD_DEFAULT);?>';
 			
 				$.ajax(
 				{
 					type:'POST',
 					url:"ajax/getclass.php",
-					data:{token:token},
+					data:{token:token,uid:uid},
 					success:function(data)
 					{
 						$('#listclass').html(data);
 					}
 				});
 			
+		}
+
+		function adduser()
+		{
+			var name = document.getElementById('name').value; 
+			var email = document.getElementById('email').value; 
+			var uniid = document.getElementById('university').value; 
+			var classid = document.getElementById('class').value;
+			var token='<?php echo password_hash("tea_login", PASSWORD_DEFAULT);?>';
+			if(email!="" && classid!="")
+			{
+				$.ajax(
+				{
+					type:'POST',
+					url:"ajax/addteacher.php",
+					data:{name:name,email:email,uniid:uniid,classid:classid,token:token},
+					success:function(data)
+					{
+						// alert(data);
+						if(data == 0)
+						{
+							alert("registered successfully");
+						}
+					}
+				});
+			} 
+		}
+		getallteacher();
+
+		function getallteacher()
+		{
+			var token='<?php echo password_hash("getteacher", PASSWORD_DEFAULT);?>';
+				$.ajax(
+				{
+					type:'POST',
+					url:"ajax/getteacher.php",
+					data:{token:token},
+					success:function(data)
+					{
+						// alert(data);
+						
+						$('#teacherlist').html(data);
+					}
+				});
+
 		}
 
 
