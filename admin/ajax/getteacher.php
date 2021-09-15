@@ -9,22 +9,26 @@
     	$execute = $check->execute($data);
     	?>
     	<table class="table table-bordered">
-    		<tr>
-    			<td>NAME</td>
-    			<td>CLASS</td>
-    			<td>UNIVERSITY</td>
+    		<tr style="display: inline-flex;">
+                <td style="border:1px solid black;">SR NO</td>
+    			<td style="border:1px solid black;">NAME</td>
+    			<td style="border:1px solid black;">CLASS</td>
+    			<td style="border:1px solid black;">UNIVERSITY</td>
     		</tr>
     		<?php
-
+                $srno = 1;
     		while($datarow=$check->fetch())
     		{
     			?>
-    			<tr>
-    				<td><?php echo $datarow['name']?></td>
-    				<td><?php echo $datarow['cname']?></td>
-    				<td><?php echo $datarow['uname']?></td>
+    			<tr style="display: inline-flex;">
+                    <td style="border:1px solid black;"><?php echo $srno?></td>
+    				<td style="border:1px solid black;"><?php echo $datarow['name']?></td>
+    				<td style="border:1px solid black;"><?php echo $datarow['cname']?></td>
+    				<td style="border:1px solid black;"><?php echo $datarow['uname']?></td>
     			</tr>
-    	<?php	} ?>
+    	<?php
+            $srno++;
+        	} ?>
     	</table>
     	<?php
     }

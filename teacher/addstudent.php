@@ -5,7 +5,7 @@ session_start();
 <html>
 <head>
 	<title>Admin Page</title>
-	<link rel="stylesheet" type="text/css" href="css/addteacher.css">
+	<link rel="stylesheet" type="text/css" href="css/addstudent.css">
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,14 +21,13 @@ session_start();
 	<div class="col-sm-12 page">
 		<div class="col-sm-2 index">
 			<div class="dashboard">Dashboard<hr></div>
-			<div class="admin">Admin</div>
+			<div class="teacher">Teacher</div>
 			<div class="menu-bar">
 				<ul>
-					<li><a href="addteacher.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>Teacher</li>
-					<li><a href="adduni.php"><i class="fa fa-university" aria-hidden="true"></i></a>University</li>
-					<li><a href="addclass.php"><i class="fa fa-desktop" aria-hidden="true"></i></a>Class</li>
+					<li><a href="addstudent.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>Student</li>
+					<li><a href="addtest.php"><i class="fa fa-university" aria-hidden="true"></i></a>Test</li>
+					<li><a href="showresult.php"><i class="fa fa-desktop" aria-hidden="true"></i></a>Result</li>
 				</ul>
-				
 			</div>
 		</div>
 		<div class="col-sm-8 background">
@@ -47,23 +46,22 @@ session_start();
 								<input type="email" name="email" id="email" class="form-control" placeholder="Enter your email">
 							</div>
 							<div class="user_fields">
-								<label for="university">University:</label>
+								<label for="test">Test:</label>
 								<div class="list" id="list" style="width:100%;float:left;color:black;"></div>
-							</div>
-							<div class="user_fields">
-								<label for="class">Class:</label>
-								<div class="listclass" id="listclass" style="width:100%;float:left;color:black;"></div>
 							</div>
 							<div class="col-sm-12">
 								<div class="col-sm-3"></div>
 							<div class="col-sm-6 submit_btn">
-								<button type="submit" name="Submit" id="submit" onclick="adduser();">Submit</button>
+								<button type="submit" name="Submit" id="submit" onclick="addstudent();">Submit</button>
 							</div>
 							<div class="col-sm-3"></div>
 						</div>
 				    </div>
 				    <div>
-				    	<div class="teacherlist" id="teacherlist" style="margin-top: 20px; width: 100%; float:left;"></div>
+				    	<div class="teacherlist" id="teacherlist"></div>
+				    </div>
+				    <div>
+				    	<div class="studentlist" id="studentlist" style="margin-top: 20px; width: 100%; float:left;"></div>
 				    </div>
 			</form>				
 			</div>
@@ -75,15 +73,16 @@ session_start();
 		</div>
 	<script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
 	<script type="text/javascript">
-        getuni();
-		function getuni()
+
+		gettest();
+		function gettest()
 		{
-			var token='<?php echo password_hash("getuni", PASSWORD_DEFAULT);?>';
+			var token='<?php echo password_hash("gettest", PASSWORD_DEFAULT);?>';
 			
 				$.ajax(
 				{
 					type:'POST',
-					url:"ajax/getuni.php",
+					url:"ajax/gettest.php",
 					data:{token:token},
 					success:function(data)
 					{
@@ -93,69 +92,50 @@ session_start();
 			
 		}
 
-		function getclass()
-		{
-			var uid = document.getElementById('university').value;
-			var token='<?php echo password_hash("getclass", PASSWORD_DEFAULT);?>';
-			
-				$.ajax(
-				{
-					type:'POST',
-					url:"ajax/getclass.php",
-					data:{token:token,uid:uid},
-					success:function(data)
-					{
-						$('#listclass').html(data);
-					}
-				});
-			
-		}
-
-		function adduser()
+		function addstudent()
 		{
 			var name = document.getElementById('name').value; 
 			var email = document.getElementById('email').value; 
-			var uniid = document.getElementById('university').value; 
-			var classid = document.getElementById('class').value;
-			var token='<?php echo password_hash("tea_login", PASSWORD_DEFAULT);?>';
-			if(email!="" && classid!="")
+			var tuid = document.getElementById('test').value;
+			var token='<?php echo password_hash("addstudent", PASSWORD_DEFAULT);?>';
+			if(email!="" && tuid!="")
 			{
 				$.ajax(
 				{
 					type:'POST',
-					url:"ajax/addteacher.php",
-					data:{name:name,email:email,uniid:uniid,classid:classid,token:token},
+					url:"ajax/addstudent.php",
+					data:{name:name,email:email,tuid:tuid,token:token},
 					success:function(data)
 					{
 						// alert(data);
 						if(data == 0)
 						{
-							alert("registered successfully");
+							alert("Student added successfully");
 						}
 					}
 				});
 			} 
 		}
-		getallteacher();
 
-		function getallteacher()
+		getallstudent();
+
+		function getallstudent()
 		{
-			var token='<?php echo password_hash("getteacher", PASSWORD_DEFAULT);?>';
+			var token='<?php echo password_hash("getstudent", PASSWORD_DEFAULT);?>';
 				$.ajax(
 				{
 					type:'POST',
-					url:"ajax/getteacher.php",
+					url:"ajax/getstudent.php",
 					data:{token:token},
 					success:function(data)
 					{
 						// alert(data);
 						
-						$('#teacherlist').html(data);
+						$('#studentlist').html(data);
 					}
 				});
 
 		}
-
 
     </script>
 <script type="text/javascript">

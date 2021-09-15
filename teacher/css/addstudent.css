@@ -85,3 +85,45 @@
 .dashboard hr{
 	color: black;
 }
+.contain{
+	background-color: #c5a492;
+	padding: 25px 80px;
+	width: 60%;
+	height: 50%;
+	margin-left: 20%;
+	margin-top: 50px;
+	border-radius: 10px;
+	border: 1px solid white;
+	color: white;
+}
+.user_fields{
+	margin: 0px;
+}
+label{
+	margin: 0px;
+	padding-top: 10px;	
+}
+.submit_btn{
+	margin: 25px 0px;
+	padding-top: 50px;
+	text-align: center;
+	align-items: center;
+	display: flex;
+	color: white;
+}
+input{
+	background-color: red;
+	height: 30px;
+	width: 70px;
+	border-radius: 5px;
+	border: 0px;
+}
+button{
+	background-color: transparent;
+	color: white;
+	height: 40px;
+	padding: 9px 12px;
+	border-radius: 5px;
+	border: 1px solid white;
+	width: 75%;
+}

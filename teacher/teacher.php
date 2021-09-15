@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +22,14 @@
 		<div class="col-sm-2 index">
 			<div class="dashboard">Dashboard<hr></div>
 			<div class="teacher">Teacher</div>
+			<div class="menu-bar">
+				<ul>
+					<li><a href="addstudent.php"><i class="fa fa-user-circle" aria-hidden="true"></i></a>Student</li>
+					<li><a href="addtest.php"><i class="fa fa-university" aria-hidden="true"></i></a>Test</li>
+					<li><a href="showresult.php"><i class="fa fa-desktop" aria-hidden="true"></i></a>Result</li>
+				</ul>
+				
+			</div>
 		</div>
 		<div class="col-sm-8 background">
 			<h1>hello <?php echo $_SESSION['email'];?></h1>
